@@ -1,7 +1,7 @@
 class_name Gun
 extends Position2D
 
-const BULLET_VELOCITY = 500
+const BULLET_VELOCITY = 900
 
 const Bullet = preload("res://src/Objects/Bullet.tscn")
 onready var timer = $Cooldown
