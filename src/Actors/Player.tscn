@@ -26,6 +26,12 @@ scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 4 )
 
 [node name="Cooldown" type="Timer" parent="Sprite/Gun"]
+one_shot = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2( 0, -10 )
+current = true
+zoom = Vector2( 0.5, 0.5 )

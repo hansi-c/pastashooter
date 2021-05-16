@@ -62,6 +62,10 @@ func _physics_process(_delta):
 	var is_shooting = false
 	if Input.is_action_just_pressed("shoot" + action_suffix):
 		is_shooting = gun.shoot(look_direction.normalized())
+
+	if Input.is_action_just_released("next_bullet"):
+		gun.next_ammunition()
+
 #
 #	var animation = get_new_animation(is_shooting)
 #	if animation != animation_player.current_animation and shoot_timer.is_stopped():
