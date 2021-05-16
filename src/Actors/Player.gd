@@ -52,8 +52,10 @@ func _physics_process(_delta):
 	if look_direction.x != 0:
 		if look_direction.x > 0:
 			sprite.scale.x = 1
+			$Camera2D.offset_h = 0.5
 		else:
 			sprite.scale.x = -1
+			$Camera2D.offset_h = -0.5
 
 	# We use the sprite's scale to store Robi’s look direction which allows us to shoot
 	# bullets forward.
@@ -101,7 +103,6 @@ func calculate_move_velocity(
 		# as to not be too abrupt.
 		velocity.y *= 0.6
 	return velocity
-
 
 #func get_new_animation(is_shooting = false):
 #	var animation_new = ""

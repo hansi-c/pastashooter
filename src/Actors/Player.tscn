@@ -6,7 +6,8 @@
 [ext_resource path="res://assets/art/player/pastagun.png" type="Texture" id=4]
 
 [sub_resource type="CapsuleShape2D" id=1]
-height = 9.0
+radius = 7.24515
+height = 13.175
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 1 )
@@ -18,20 +19,23 @@ region_rect = Rect2( 64.098, 32.864, 23.908, 31.029 )
 region_filter_clip = true
 
 [node name="Gun" type="Position2D" parent="Sprite"]
-position = Vector2( 9, 3 )
+position = Vector2( 0, 3 )
 script = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="Sprite/Gun"]
-scale = Vector2( 0.5, 0.5 )
+scale = Vector2( 0.4, 0.4 )
 texture = ExtResource( 4 )
 
 [node name="Cooldown" type="Timer" parent="Sprite/Gun"]
 one_shot = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -2 )
 shape = SubResource( 1 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
-offset = Vector2( 0, -10 )
 current = true
-zoom = Vector2( 0.5, 0.5 )
+zoom = Vector2( 0.3, 0.3 )
+smoothing_enabled = true
+smoothing_speed = 2.0
+offset_v = -0.66

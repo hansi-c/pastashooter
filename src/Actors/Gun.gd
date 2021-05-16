@@ -9,14 +9,14 @@ onready var Bullet = preload("res://src/Objects/Bullet.tscn")
 
 func _ready():
 	available_bullets["spirali"] = {
-		"velocity": 900,
+		"velocity": 1000,
 		"cooldown": 0.3,
 		"texture": load("res://assets/art/pasta/spirali.png"),
 		"rotation" : -51.0
 	}
 
 	available_bullets["farfalle"] = {
-		"velocity": 200,
+		"velocity": 400,
 		"cooldown": 1,
 		"texture": load("res://assets/art/pasta/farfalle.png"),
 		"rotation" : 0.0
@@ -25,6 +25,8 @@ func _ready():
 	timer.wait_time = available_bullets.values()[0]["cooldown"]
 
 func _process(delta):
+	var gun_rotation = $Sprite.rotation
+	gun_rotation = look_at(get_global_mouse_position())
 	update()
 
 func _draw():

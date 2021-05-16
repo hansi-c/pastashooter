@@ -4,12 +4,13 @@
 [ext_resource path="res://src/Objects/Bullet.gd" type="Script" id=2]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 1.45726
+radius = 1.28124
 height = 3.49304
 
 [sub_resource type="Animation" id=2]
 resource_name = "destroy"
 length = 0.3
+loop = true
 tracks/0/type = "method"
 tracks/0/path = NodePath(".")
 tracks/0/interp = 1
@@ -23,6 +24,18 @@ tracks/0/keys = {
 "args": [  ],
 "method": "queue_free"
 } ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0, 0, 0, 0.509804 ) ]
 }
 
 [node name="Bullet" type="RigidBody2D"]
@@ -39,7 +52,7 @@ rotation = 1.5708
 shape = SubResource( 1 )
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 2.0
 one_shot = true
 autostart = true
 
