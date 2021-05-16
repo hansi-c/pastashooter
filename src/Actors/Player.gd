@@ -11,9 +11,7 @@ export(String) var action_suffix = ""
 
 #onready var platform_detector = $PlatformDetector
 onready var sprite = $Sprite
-
-
-
+onready var gun = sprite.get_node(@"Gun")
 
 # Physics process is a built-in loop in Godot.
 # If you define _physics_process on a node, Godot will call it every frame.
@@ -61,9 +59,9 @@ func _physics_process(_delta):
 	# bullets forward.
 	# There are many situations like these where you can reuse existing properties instead of
 	# creating new variables.
-#	var is_shooting = false
-#	if Input.is_action_just_pressed("shoot" + action_suffix):
-#		is_shooting = gun.shoot(sprite.scale.x)
+	var is_shooting = false
+	if Input.is_action_just_pressed("shoot" + action_suffix):
+		is_shooting = gun.shoot(look_direction.normalized())
 #
 #	var animation = get_new_animation(is_shooting)
 #	if animation != animation_player.current_animation and shoot_timer.is_stopped():

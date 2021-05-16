@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://src/Actors/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/art/player/playersprite.png" type="Texture" id=2]
 [ext_resource path="res://src/Actors/Gun.gd" type="Script" id=3]
+[ext_resource path="res://assets/art/player/pastagun.png" type="Texture" id=4]
 
 [sub_resource type="CapsuleShape2D" id=1]
 height = 9.0
@@ -19,6 +20,12 @@ region_filter_clip = true
 [node name="Gun" type="Position2D" parent="Sprite"]
 position = Vector2( 9, 3 )
 script = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="Sprite/Gun"]
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 4 )
+
+[node name="Cooldown" type="Timer" parent="Sprite/Gun"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
