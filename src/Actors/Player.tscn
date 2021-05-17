@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://src/Actors/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/art/player/playersprite.png" type="Texture" id=2]
 [ext_resource path="res://src/Actors/Gun.gd" type="Script" id=3]
 [ext_resource path="res://assets/art/player/pastagun.png" type="Texture" id=4]
+[ext_resource path="res://assets/ui/crosshair_offset.png" type="Texture" id=5]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 7.24515
@@ -25,6 +26,10 @@ script = ExtResource( 3 )
 [node name="Sprite" type="Sprite" parent="Sprite/Gun"]
 scale = Vector2( 0.4, 0.4 )
 texture = ExtResource( 4 )
+
+[node name="Crosshair" type="Sprite" parent="Sprite/Gun/Sprite"]
+scale = Vector2( 2, 2 )
+texture = ExtResource( 5 )
 
 [node name="Cooldown" type="Timer" parent="Sprite/Gun"]
 one_shot = true
