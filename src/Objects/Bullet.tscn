@@ -4,8 +4,8 @@
 [ext_resource path="res://src/Objects/Bullet.gd" type="Script" id=2]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 1.28124
-height = 3.49304
+radius = 2.10793
+height = 1.82918
 
 [sub_resource type="Animation" id=2]
 resource_name = "destroy"
@@ -41,6 +41,9 @@ tracks/1/keys = {
 [node name="Bullet" type="RigidBody2D"]
 collision_layer = 0
 collision_mask = 26
+continuous_cd = 2
+contacts_reported = 1
+contact_monitor = true
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -59,4 +62,5 @@ autostart = true
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/destroy = SubResource( 2 )
 
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
