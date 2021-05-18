@@ -1,6 +1,7 @@
 class_name Player
 extends Actor
 
+var max_health = 100
 
 # warning-ignore:unused_signal
 signal collect_coin()
