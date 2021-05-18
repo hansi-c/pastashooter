@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://src/Level/Level.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Actors/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/Main/Game.gd" type="Script" id=3]
+[ext_resource path="res://src/UI/HUD.tscn" type="PackedScene" id=4]
 
 [node name="Game" type="Node"]
 script = ExtResource( 3 )
@@ -12,3 +13,7 @@ script = ExtResource( 3 )
 [node name="Player" parent="Level" instance=ExtResource( 2 )]
 position = Vector2( 301.636, 534.599 )
 collision_mask = 30
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" parent="CanvasLayer" instance=ExtResource( 4 )]
