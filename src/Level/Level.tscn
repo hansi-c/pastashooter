@@ -158,3 +158,4 @@ tile_data = PoolIntArray( 65535, 3, 0, 0, 2, 0, 31, 3, 0, 32, 3, 0, 131071, 3, 0
 
 [node name="Enemy" parent="Enemies" instance=ExtResource( 3 )]
 position = Vector2( 200, 550 )
+collision_layer = 2
