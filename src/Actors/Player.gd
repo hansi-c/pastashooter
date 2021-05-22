@@ -11,6 +11,7 @@ export(String) var action_suffix = ""
 #onready var platform_detector = $PlatformDetector
 onready var sprite = $Sprite
 onready var gun = sprite.get_node(@"Gun")
+onready var animation_player = $AnimationPlayer
 
 # Physics process is a built-in loop in Godot.
 # If you define _physics_process on a node, Godot will call it every frame.
@@ -103,6 +104,9 @@ func calculate_move_velocity(
 		velocity.y *= 0.6
 	return velocity
 
+func register_hit(damage):
+	animation_player.play("take_hit")
+	.register_hit(damage)
 #func get_new_animation(is_shooting = false):
 #	var animation_new = ""
 #	if is_on_floor():
