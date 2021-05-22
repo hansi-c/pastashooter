@@ -6,10 +6,9 @@
 
 [sub_resource type="CanvasItemMaterial" id=1]
 
-[sub_resource type="RayShape2D" id=10]
+[sub_resource type="RayShape2D" id=2]
 
-[sub_resource type="Animation" id=2]
-resource_name = "destroy"
+[sub_resource type="Animation" id=3]
 length = 1.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -110,7 +109,7 @@ tracks/7/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, -32 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=4]
 length = 6.75
 loop = true
 step = 0.25
@@ -127,7 +126,7 @@ tracks/0/keys = {
 "values": [ 5, 6, 5, 6, 5, 6, 7, 6, 7, 5 ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=5]
 length = 1.25
 loop = true
 step = 0.25
@@ -144,22 +143,22 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3, 4, 0 ]
 }
 
-[sub_resource type="CapsuleShape2D" id=5]
+[sub_resource type="CapsuleShape2D" id=6]
 radius = 11.0
 height = 7.0
 
-[sub_resource type="CanvasItemMaterial" id=6]
+[sub_resource type="CanvasItemMaterial" id=7]
 blend_mode = 1
 
-[sub_resource type="Gradient" id=7]
+[sub_resource type="Gradient" id=8]
 offsets = PoolRealArray( 0.5, 1 )
 colors = PoolColorArray( 1, 1, 1, 1, 0, 0, 0, 1 )
 
-[sub_resource type="GradientTexture" id=8]
-gradient = SubResource( 7 )
+[sub_resource type="GradientTexture" id=9]
+gradient = SubResource( 8 )
 width = 256
 
-[sub_resource type="ParticlesMaterial" id=9]
+[sub_resource type="ParticlesMaterial" id=10]
 emission_shape = 1
 emission_sphere_radius = 8.0
 flag_disable_z = true
@@ -172,7 +171,7 @@ orbit_velocity_random = 0.0
 angle_random = 1.0
 scale = 4.0
 scale_random = 1.0
-color_ramp = SubResource( 8 )
+color_ramp = SubResource( 9 )
 hue_variation = 0.05
 hue_variation_random = 0.46
 
@@ -216,20 +215,20 @@ collision_layer = 0
 [node name="PlayerDetectionShape" type="CollisionShape2D" parent="Sprite/PlayerDetectionArea"]
 rotation = -1.5708
 scale = Vector2( 42.649, 7.261 )
-shape = SubResource( 10 )
+shape = SubResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/destroy = SubResource( 2 )
-anims/idle = SubResource( 3 )
-anims/walk = SubResource( 4 )
+anims/destroy = SubResource( 3 )
+anims/idle = SubResource( 4 )
+anims/walk = SubResource( 5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = -1.5708
-shape = SubResource( 5 )
+shape = SubResource( 6 )
 
 [node name="Explosion" type="Particles2D" parent="."]
 self_modulate = Color( 1, 1, 1, 0.12 )
-material = SubResource( 6 )
+material = SubResource( 7 )
 emitting = false
 amount = 32
 lifetime = 0.5
@@ -237,7 +236,7 @@ one_shot = true
 speed_scale = 1.2
 explosiveness = 0.76
 draw_order = 215832976
-process_material = SubResource( 9 )
+process_material = SubResource( 10 )
 texture = ExtResource( 2 )
 
 [node name="PlayerDetector" type="RayCast2D" parent="."]
