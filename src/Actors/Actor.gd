@@ -23,7 +23,7 @@ func _physics_process(delta):
 func register_hit(damage):
 	current_health -= damage
 	emit_signal("health_changed")
-	
+
 	if current_health <= 0:
 		destroy()
 

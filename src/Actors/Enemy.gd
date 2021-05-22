@@ -112,4 +112,5 @@ func configure_bullet(bullet):
 	var sprite = bullet.get_node("Sprite")
 	sprite.set_texture(bullet_texture)
 	bullet.velocity = 100.0
+	bullet.set_collision_mask_bit(1, false)
 

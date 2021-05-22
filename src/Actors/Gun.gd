@@ -60,3 +60,4 @@ func configure_bullet(bullet):
 	sprite.set_texture(bullet_spec["texture"])
 	sprite.rotation_degrees = bullet_spec["rotation"]
 	bullet.velocity = bullet_spec["velocity"]
+	bullet.set_collision_mask_bit(0, false)

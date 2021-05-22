@@ -6,9 +6,8 @@
 [ext_resource path="res://assets/art/player/pastagun.png" type="Texture" id=4]
 [ext_resource path="res://assets/ui/crosshair_offset.png" type="Texture" id=5]
 
-[sub_resource type="CapsuleShape2D" id=1]
-radius = 3.91484
-height = 6.94692
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 3.17085, 12.4681 )
 
 [sub_resource type="Animation" id=2]
 resource_name = "take_hit"
@@ -71,7 +70,7 @@ texture = ExtResource( 5 )
 one_shot = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0.198425, -0.809448 )
+position = Vector2( -0.0958903, -0.389 )
 shape = SubResource( 1 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
