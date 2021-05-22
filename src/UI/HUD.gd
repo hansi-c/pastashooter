@@ -3,18 +3,25 @@ extends MarginContainer
 onready var player_number_label = $Bars/Lifebar/Bar/Count/Background/Number
 onready var player_bar = $Bars/Lifebar/Bar/Gauge
 onready var tween = $Tween
-var animated_player_health = 0
+var player_old_health = 0
+onready var player = $"../../Level/Player"
 
-#func _ready():
-#	var player_max_health = $"../Level/Player".max_health
-#	player_bar.max_value = player_max_health
-#	update_health(player_max_health, "player")
-##
-#func get_animated_health(character):
-#	return animated_player_health
-##
-#func update_health(new_value, character):
-#	var animated_health = get_animated_health(character)
-#	tween.interpolate_property(self, "animated_" + character + "_health", animated_health, max(new_value, 0), 0.6, Tween.TRANS_LINEAR, Tween.EASE_IN)
-#	if not tween.is_active():
-#		tween.start()
+func _ready():
+	player_old_health = player.current_health
+	player_bar.max_value = player.max_health
+	update_health()
+	player.connect("health_changed", self, "_on_player_health_changed")
+
+func update_health():
+	player_number_label.text = str(player_bar.value)
+	animate_bar(player_old_health, player.current_health)
+	player_old_health = player.current_health
+
+func animate_bar(old_health, new_health):
+	tween.interpolate_property(player_bar, ":value", old_health, new_health, 0.3, Tween.TRANS_BOUNCE, Tween.EASE_OUT)
+	if not tween.is_active():
+		tween.start()
+
+func _on_player_health_changed():
+	print("caught signal player health changed")
+	update_health()

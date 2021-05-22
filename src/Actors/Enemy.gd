@@ -1,7 +1,6 @@
 class_name Enemy
 extends Actor
 
-
 enum State {
 	WALKING,
 	DEAD,
@@ -14,6 +13,12 @@ onready var floor_detector_left = $FloorDetectorLeft
 onready var floor_detector_right = $FloorDetectorRight
 onready var sprite = $Sprite
 onready var animation_player = $AnimationPlayer
+onready var Bullet = preload("res://src/Objects/Bullet.tscn")
+onready var bullet_texture = preload("res://assets/art/enemy/bullet.png")
+onready var _shoot_timer = $ShootCooldown
+
+var _is_player_visible = false
+var _player_body
 
 # This function is called when the scene enters the scene tree.
 # We can initialize variables here.
@@ -54,6 +59,13 @@ func _physics_process(_delta):
 	else:
 		sprite.scale.x = -1
 
+	if _is_player_visible:
+		if _shoot_timer.is_stopped():
+			_shoot_timer.start()
+			var position = _player_body.transform.get_origin()
+			var direction = position - transform.origin
+			shoot(direction)
+
 	var animation = get_new_animation()
 	if animation != animation_player.current_animation:
 		animation_player.play(animation)
@@ -74,3 +86,30 @@ func get_new_animation():
 	else:
 		animation_new = "destroy"
 	return animation_new
+
+func _on_PlayerDetectionArea_body_entered(body):
+	if body is Player:
+		_is_player_visible = true
+		_player_body = body
+
+func _on_PlayerDetectionArea_body_exited(body):
+	if body is Player:
+		_is_player_visible = false
+		_player_body = null
+
+func shoot(direction):
+	var bullet = Bullet.instance()
+	configure_bullet(bullet)
+
+	bullet.global_position = global_position
+	bullet.linear_velocity = direction * bullet.velocity
+
+	bullet.set_as_toplevel(true)
+	add_child(bullet)
+	return true
+
+func configure_bullet(bullet):
+	var sprite = bullet.get_node("Sprite")
+	sprite.set_texture(bullet_texture)
+	bullet.velocity = 100.0
+
