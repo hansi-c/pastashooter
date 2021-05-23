@@ -16,3 +16,4 @@ func _on_body_entered(body):
 	if body is Actor:
 		print("body is actor. current health: %s" % body.current_health)
 		body.register_hit(damage)
+	$AnimationPlayer.play("destroy")
