@@ -169,14 +169,13 @@ initial_velocity_random = 0.5
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 angle_random = 1.0
-scale = 4.0
 scale_random = 1.0
 color_ramp = SubResource( 9 )
 hue_variation = 0.05
 hue_variation_random = 0.46
 
 [node name="Enemy" type="KinematicBody2D"]
-collision_layer = 2
+collision_layer = 0
 collision_mask = 24
 script = ExtResource( 5 )
 speed = Vector2( 75, 250 )
@@ -205,7 +204,7 @@ texture = ExtResource( 1 )
 offset = Vector2( 4, -3 )
 hframes = 16
 vframes = 2
-frame = 7
+frame = 4
 region_rect = Rect2( 225.266, 177.112, 426.115, 261.499 )
 
 [node name="PlayerDetectionArea" type="Area2D" parent="Sprite"]

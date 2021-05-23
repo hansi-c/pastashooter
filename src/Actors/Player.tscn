@@ -7,7 +7,7 @@
 [ext_resource path="res://assets/ui/crosshair_offset.png" type="Texture" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 3.17085, 12.4681 )
+extents = Vector2( 3.17085, 11.1628 )
 
 [sub_resource type="Animation" id=2]
 resource_name = "take_hit"
